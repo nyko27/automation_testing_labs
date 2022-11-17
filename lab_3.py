@@ -25,11 +25,16 @@ class StoreTester(unittest.TestCase):
 
     def setUp(self):
         self.driver.get("http://demo-store.seleniumacademy.com")
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+
+    def tearDown(self):
         self.driver.find_element(By.XPATH, '//*[@id="header"]/div/div[2]/div/a').click()
         logout_btn = self.driver.find_element(By.XPATH, '//*[@id="header-account"]/div/ul/li[5]/a')
         if logout_btn.text == 'Log Out':
             logout_btn.click()
-        self.driver.get("http://demo-store.seleniumacademy.com")
 
     def login(self, email, password):
         self.driver.find_element(By.XPATH, '//*[@id="header"]/div/div[2]/div/a').click()
@@ -88,11 +93,6 @@ class StoreTester(unittest.TestCase):
 
         self.assertIn("was added to your shopping cart.", added_to_cart_msg)
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
-
 
 if __name__ == "__main__":
-    unittest.TestLoader.sortTestMethodsUsing = None
     unittest.main()
