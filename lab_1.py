@@ -22,5 +22,4 @@ driver.find_element(By.ID, 'robotsRule').click()
 driver.find_element(By.XPATH, "//button").click()
 
 sleep(5)
-
 driver.quit()
