@@ -14,7 +14,7 @@ driver = webdriver.Chrome()
 driver.get('http://suninjuly.github.io/explicit_wait2.html')
 
 try:
-    element = WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 20).until(
         ec.text_to_be_present_in_element((By.ID, "price"), '100')
     )
     driver.find_element(By.ID, 'book').click()
